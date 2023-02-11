@@ -22,6 +22,13 @@ class StartPage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
+                // Startページのネストしたルートのページ.
+                context.go('/z');
+              },
+              child: const Text('fullScreen'),
+            ),
+            TextButton(
+              onPressed: () {
                 // BottomNavigationBarの最初のページへ画面遷移するコード.
                 context.go('/a');
               },

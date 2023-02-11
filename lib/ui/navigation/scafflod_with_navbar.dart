@@ -16,6 +16,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomNavigationBar(
@@ -55,6 +56,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     if (location.startsWith('/c')) {
       return 2;
     }
+    // 追加したコード。0から数えて追加するみたいです.
     if (location.startsWith('/d')) {
       return 3;
     }
@@ -72,6 +74,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
       case 2:
         GoRouter.of(context).go('/c');
         break;
+      // 追加したコード
       case 3:
         GoRouter.of(context).go('/d');
         break;

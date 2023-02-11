@@ -10,6 +10,7 @@ import 'package:go_route_navigationbar/ui/page/start_datil.dart';
 import 'package:go_route_navigationbar/ui/page/start_page.dart';
 import 'package:go_router/go_router.dart';
 
+// GlobalKeyを使用してボトムナビゲーションバーのWidgetにアクセスできるようにする.
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
 final GlobalKey<NavigatorState> _shellNavigatorKey =
@@ -19,6 +20,8 @@ final GoRouter goRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
   routes: <RouteBase>[
+    /// ボトムナビゲーションバーとは違うルート.
+    /// [ここから]
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
@@ -31,9 +34,19 @@ final GoRouter goRouter = GoRouter(
                 return const StartDetail();
               },
             ),
+        GoRoute(
+              path: 'z',
+              pageBuilder: (context, state) => const MaterialPage(
+                fullscreenDialog: true,
+                child: StartDetail())
+            ),
       ]
     ),
+    /// [ここまで]
+    // -----------------------------------------------------------------
     /// アプリケーションシェル
+    /// この中にボトムナビゲーションバーする設定を書く.
+    /// [ここから]
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (BuildContext context, GoRouterState state, Widget child) {
@@ -116,5 +129,6 @@ final GoRouter goRouter = GoRouter(
         ),
       ],
     ),
+    /// [ここまで]
   ],
 );
